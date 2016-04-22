@@ -1,16 +1,20 @@
 "use strict";
 
 module.exports = {
-  entry: './public/app.jsx',
-  output: {path: "./dist", filename: 'bundle.js'},
+  entry: "./public/app.js",
+  output: {
+    path: "./dist",
+    filename: "bundle.js",
+    publicPath: "/dist/"
+  },
   module: {
     loaders: [
       {
         test: /.jsx?$/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         exclude: /node_modules/,
         query: {
-          presets: ['es2015', 'react']
+          presets: ["es2015", "react"]
         }
       }
     ]
