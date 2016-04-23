@@ -1,11 +1,12 @@
 import React from "react";
+import { Router, Link } from 'react-router';
 
 export default class Home extends React.Component {
   render() {
     return (
-      <h1>
-        Welcome
-      </h1>
+      <div>
+        <Link to="/signup">Sign up</Link>
+      </div>
     );
   }
 }
