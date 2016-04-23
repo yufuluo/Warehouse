@@ -1,22 +1,22 @@
-"use strict";
+/* eslint-disable no-var */
+var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
-  entry: "./public/app.js",
+  entry: [
+    './src/app'
+  ],
+  devtool: 'eval-source-map',
   output: {
-    path: "./dist",
-    filename: "bundle.js",
-    publicPath: "/dist/"
+    path: __dirname,
+    filename: 'app.js',
+    publicPath: '/js/'
   },
   module: {
-    loaders: [
-      {
-        test: /.jsx?$/,
-        loader: "babel-loader",
-        exclude: /node_modules/,
-        query: {
-          presets: ["es2015", "react"]
-        }
-      }
-    ]
+    loaders: [{
+      test: /\.js$/,
+      loaders: ['babel'],
+      include: path.join(__dirname, 'src')
+    }]
   }
 };

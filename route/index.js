@@ -1,10 +1,23 @@
 "use strict";
 
 const uuid = require("uuid");
+const React = require("react");
+const ReactDomServer = require("react-dom/server");
+const ReactRouter = require("react-router");
 
 const User = require("../model/user");
 
+function renderToStaticMarkup(renderProps) {
+	return ReactDomServer.renderToStaticMarkup(
+		React.createElement(ReactRouter.RouterContext, renderProps)
+	);
+}
+
 module.exports = (app) => {
+	app.get('*', function (req, res) {
+		res.sendFile(path.join(__dirname, 'public/index.html'));
+	});
+
 	app.post("/api/signup", (req, res) => {
 		const userData = {
 			firstName: req.body.firstName,
