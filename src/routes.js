@@ -8,7 +8,7 @@ export default (
   <Router history={browserHistory}>
 	  <Route path="/" component={Header}>
       <IndexRoute component={Home} />
-	    <Route path="signup" component={Signup} />
+	    <Route path="/signup" component={Signup} />
 	  </Route>
   </Router>
 );

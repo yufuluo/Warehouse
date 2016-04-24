@@ -1,5 +1,8 @@
 import React from "react";
 
+import { Button } from "./lib/button";
+import { InputField } from "./lib/form";
+
 export default class Signup extends React.Component {
   handleSubmit() {
 
@@ -7,13 +10,16 @@ export default class Signup extends React.Component {
 
   render() {
     return (
-      <div>
-        <form className="Signup" onSubmit={this.handleSubmit}>
-          <input className="inputField" type="text" placeholder="First Name" ref="firstNmae"/><br/>
-          <input className="inputField" type="text" placeholder="Last Name" ref="lastName"/><br/>
-          <input className="inputField" type="text" placeholder="Email" ref="email"/><br/>
-          <input className="inputField" type="text" placeholder="Password" ref="password"/><br/>
-          <input className="button" type="submit" value="signup"/>
+      <div className="center_box background">
+        <h3 className="center"> ʕ•̀ω•́ʔ  Hi, bear! Please register to build your own den!  ʕ•̫͡•ʕ•̫͡•ʔ•̫͡•ʔ•̫͡•ʕ</h3>
+        <form onSubmit={this.handleSubmit}>
+          <InputField placeholder="First Name" ref="firstNmae"/><br/>
+          <InputField placeholder="Last Name" ref="lastName"/><br/>
+          <InputField placeholder="Email" ref="email"/><br/>
+          <InputField placeholder="Password" ref="password"/><br/>
+          <InputField placeholder="Confirm Password" ref="password_confirm"/><br/>
+          <Button value="Back" />
+          <Button className="right" value="Sign up" />
         </form>
       </div>
     );
