@@ -1,4 +1,5 @@
 import React from "react";
+import { Router } from "react-router";
 import Validation from "react-validation";
 import validator from "validator";
 
@@ -52,7 +53,7 @@ export default class Signup extends React.Component {
 
   handleCancel(e) {
     e.preventDefault();
-
+    this.context.router.goBack();
   }
 
   render() {
@@ -175,3 +176,9 @@ export default class Signup extends React.Component {
     );
   }
 }
+
+Signup.contextTypes = {
+  router: function contextType() {
+    return React.PropTypes.func.isRequired;
+  }
+};
