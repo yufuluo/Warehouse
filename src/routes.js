@@ -1,6 +1,6 @@
 import React from "react";
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import Header from "./components/header";
+import { Header } from "./components/header";
 import Home from "./components/home";
 import Signup from "./components/signup";
 
