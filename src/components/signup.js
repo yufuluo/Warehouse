@@ -1,5 +1,5 @@
 import React from "react";
-import { Router } from "react-router";
+import { Router, browserHistory } from "react-router";
 import Validation from "react-validation";
 import validator from "validator";
 
@@ -9,11 +9,6 @@ export default class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      password_confirm: "",
       error: ""
     };
   }
@@ -21,14 +16,15 @@ export default class Signup extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     if (!this.refs.form.isValidForm()) {
-      throw "Invalid form";
+      this.setState({error: "Please verify your inputs."});
+      return;
     }
 
     const data = {
       firstName: this.refs.firstName.state.value.trim(),
       lastName: this.refs.lastName.state.value.trim(),
       email: this.refs.email.state.value.trim(),
-      password: this.refs.password.state.value.trim()
+      password: this.refs.password.state.value
     };
 
     fetch("/api/signup", {
@@ -40,7 +36,8 @@ export default class Signup extends React.Component {
       body: JSON.stringify(data)
     }).then((res) => {
       if (res.status === 200) {
-
+        // this.context.router.transitionTo("/", null, {firstName: data.firstName});
+        browserHistory.push("/");
       } else if (res.status === 400) {
         this.setState({error: "An account already exists with this email address."});
       } else {
@@ -54,6 +51,17 @@ export default class Signup extends React.Component {
   handleCancel(e) {
     e.preventDefault();
     this.context.router.goBack();
+  }
+
+  validatePassword(e) {
+    e.preventDefault();
+    if (this.refs.confirm_password.state.value !== this.refs.password.state.value) {
+      e.target.classList.add("ui-error");
+      e.target.classList.add("ui-input_state_invalid");
+    } else {
+      e.target.classList.remove("ui-error");
+      e.target.classList.remove("ui-input_state_invalid");
+    }
   }
 
   render() {
@@ -135,7 +143,8 @@ export default class Signup extends React.Component {
             Password
             <Validation.Input
               className="ui-input inputField" 
-              type="text" 
+              id="password"
+              type="password"
               placeholder="Password" 
               name="password" 
               ref="password" 
@@ -153,8 +162,8 @@ export default class Signup extends React.Component {
          <label>
             Confirm password
             <Validation.Input
-              className="ui-input inputField" 
-              type="text" 
+              className="ui-input inputField"
+              type="password"
               placeholder="Confirm password" 
               name="confirm_password" 
               ref="confirm_password" 
@@ -166,6 +175,7 @@ export default class Signup extends React.Component {
                   errorMessage: "Mandatory field"
                 }
               ]}
+              onChange={this.validatePassword.bind(this)}
             />
           </label>
 
