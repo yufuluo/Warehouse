@@ -1,12 +1,14 @@
 import React from "react";
-import { Router, Link } from 'react-router';
+import { Router, Link } from "react-router";
+
+import fullPath from "../util/fullPath";
 
 export default class Home extends React.Component {
   render() {
     return (
       <div>
-        <Link to="/signup">Sign up</Link><br/>
-        <Link to="/login">Log in</Link>
+        <Link to={fullPath("/signup")}>Sign up</Link><br/>
+        <Link to={fullPath("/login")}>Log in</Link>
       </div>
     );
   }

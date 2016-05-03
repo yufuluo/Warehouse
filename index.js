@@ -7,32 +7,30 @@ const path = require("path");
 const history = require("history");
 const webpack = require("webpack");
 
-const config = require("./webpack.config");
+const webpackConfig = require("./webpack.config");
 
 const app = express();
 
-const compiler = webpack(config);
+const compiler = webpack(webpackConfig);
 
 app.use(require("webpack-dev-middleware")(compiler, {
   noInfo: true,
-  publicPath: config.output.publicPath
+  publicPath: webpackConfig.output.publicPath
 }));
 
 require("mongoose").connect("mongodb://localhost:27017/test");
 
 app.set("port", process.env.PORT || 8000);
 
-app.use("/", express.static(path.join(__dirname, "build")));
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 
-app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build/index.html'));
-});
+const config = require("./config/default");
 
-require("./route")(app);
+const route = require("./route");
+app.use(config.basePath.ui, route.uiRouter);
+app.use(config.basePath.api, route.apiRouter);
 
 app.listen(app.get("port"), () => {
   console.log("Server started: http://localhost:" + app.get("port") + "/");

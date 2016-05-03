@@ -5,6 +5,8 @@ import validator from "validator";
 
 import { Button } from "./lib/button";
 
+import fullPath from "../util/fullPath";
+
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -38,7 +40,7 @@ export default class Login extends React.Component {
       return res.json();
     }).then((res) => {
       if (res.success) {
-        browserHistory.push(`/warehouse?name=${res.firstName}&id=${res.userId}`);
+        browserHistory.push(`${fullPath("/warehouse")}?name=${res.firstName}&id=${res.userId}`);
       } else if (res.error === "USER_DOSE_NOT_EXIST") {
         this.setState({error: "Account with this email address does not exist."});
       } else if (res.error === "WRONG_PASSWORD") {
