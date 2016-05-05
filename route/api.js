@@ -79,13 +79,24 @@ apiRouter.post("/warehouse/add", (req, res) => {
 });
 
 apiRouter.get("/warehouse/:userId", (req, res) => {
-  console.log("here");
   Item.find({userId: req.params.userId}, (err, result) => {
     if (err) {
       return res.status(500).json({success: false, error: "DB_ERROR"});
     }
 
-    return res.json(result);
+    const uiData = [];
+    result.map((item) => {
+      const data = {
+        _id: item._id,
+        itemName: item.itemName,
+        description: item.description,
+        price: item.price,
+        image: item.image
+      }
+      uiData.push(data);
+    });
+
+    return res.json(uiData);
   })
 });
 

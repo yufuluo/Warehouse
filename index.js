@@ -4,7 +4,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const path = require("path");
-const history = require("history");
 const webpack = require("webpack");
 
 const webpackConfig = require("./webpack.config");
