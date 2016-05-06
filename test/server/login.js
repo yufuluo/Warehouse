@@ -9,9 +9,10 @@ const expect = chai.expect;
 
 describe("test login", () => {
   let server;
+  let db;
 
   before(() => {
-    require("mongoose").connect("mongodb://localhost:27017/test");
+    db = require('mongoose').connect("mongodb://localhost:27017/test");
 
     const app = express();
     app.use(bodyParser.json());
@@ -22,6 +23,7 @@ describe("test login", () => {
 
   after(() => {
     server.close();
+    db.disconnect();
   });
 
   it("apiRouter should exist", (done) => {

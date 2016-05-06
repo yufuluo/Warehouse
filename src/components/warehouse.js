@@ -1,36 +1,43 @@
 import React from "react";
-import Validation from "react-validation";
-import validator from "validator";
+import { ItemList } from "./item_list.js";
+import { ItemForm } from "./item_form.js";
 
-import { Button } from "./lib/button";
+
+
 
 export default class Warehouse extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
-      userId: "",
-      itemName: "",
-      description: "",
-      price: "",
-      image: ""
+      data: [],
+      error: ""
     };
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    if (!this.refs.form.isValidForm()) {
-      throw "Invalid form";
-    }
-
+  loadItems() {
     const params = this.props.location.query;
+    fetch(`/api/warehouse/${params.id}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      }
+    }).then((res) => {
+      return res.json();
+    }).then((res) => {
+      if (!res.success) {
+        this.setState({error: "There's an error in our den, please try again later."});
+      }
+      this.setState({data: res.body});
+    }).catch((err) => {
+      this.setState({error: "There's an error in our den, please try again later."});
+    });
+  }
 
-    const data = {
-      userId: params.id,
-      itemName: this.refs.itemName.state.value.trim(),
-      description: this.refs.description.state.value.trim(),
-      price: this.refs.price.state.value.trim(),
-      image: this.refs.image.state.value.trim()
-    };
+  handleSubmit(item) {
+    const items = this.state.data;
+    const newItems = items.concat([item]);
+    this.setState({data: newItems});
 
     fetch("/api/warehouse/add", {
       method: "POST",
@@ -38,106 +45,30 @@ export default class Warehouse extends React.Component {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(itemData)
     }).then((res) => {
       return res.json();
     }).then((res) => {
       if (!res.success) {
         this.setState({error: "There's an error in our den, please try again later."});
       }
+      this.setState({data: res});
     }).catch((err) => {
       this.setState({error: "There's an error in our den, please try again later."});
     });
-  }
+  } 
 
+  componentDidMount() {
+      this.loadItems();
+  }
 
 
   render() {
     return (
-      <div className="center_box background">
-        {this.state.error && <h3 className="center warning">{this.state.error}</h3>}
-        <h3 className="center"> ʕ•̀ω•́ʔ Please input new items here. </h3>
-        <Validation.Form ref="form">
-
-          <label>
-            Item Name
-            <Validation.Input
-              className="ui-input inputField" 
-              type="text" 
-              placeholder="Item name" 
-              name="itemName" 
-              ref="itemName" 
-              invalidClassName="ui-error"
-              value=""
-              validations={[
-                {
-                  rule: "isRequired",
-                  errorMessage: "Mandatory field"
-                }
-              ]}
-            />
-          </label>
-
-          <label>
-            Description
-            <Validation.Input
-              className="ui-input inputField" 
-              type="description"
-              placeholder="Description" 
-              name="description" 
-              ref="description" 
-              invalidClassName="ui-error"
-              value=""
-              validations={[
-                {
-                  rule: "isRequired",
-                  errorMessage: "Mandatory field"
-                }
-              ]}
-            />
-          </label>
-
-          <label>
-            Price
-            <Validation.Input
-              className="ui-input inputField" 
-              type="text"
-              placeholder="Price" 
-              name="price" 
-              ref="price" 
-              invalidClassName="ui-error"
-              value=""
-              validations={[
-                {
-                  rule: "isRequired",
-                  errorMessage: "Mandatory field"
-                }
-              ]}
-            />
-          </label>
-
-          <label>
-            Image URL
-            <Validation.Input
-              className="ui-input inputField" 
-              type="text"
-              placeholder="Image URL" 
-              name="iamge" 
-              ref="image" 
-              invalidClassName="ui-error"
-              value=""
-              validations={[
-                {
-                  rule: "isRequired",
-                  errorMessage: "Mandatory field"
-                }
-              ]}
-            />
-          </label>
-
-          <Button value="Submit" onClick={this.handleSubmit.bind(this)} />
-        </Validation.Form>
-      </div>
-    );
+          <div className="Warehouse">
+              <ItemList data={this.state.data}/>
+              <ItemForm onSubmit={this.handleSubmit.bind(this)}/>
+          </div>
+      );
   }
 }

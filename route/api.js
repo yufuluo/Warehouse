@@ -87,7 +87,7 @@ apiRouter.get("/warehouse/:userId", (req, res) => {
     const uiData = [];
     result.map((item) => {
       const data = {
-        _id: item._id,
+        id: item._id,
         itemName: item.itemName,
         description: item.description,
         price: item.price,

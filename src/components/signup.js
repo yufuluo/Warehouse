@@ -37,9 +37,11 @@ export default class Signup extends React.Component {
       },
       body: JSON.stringify(data)
     }).then((res) => {
-      if (res.status === 200) {
+      return res.json();
+    }).then((res) => {
+      if (res.success) {
         browserHistory.push(`${fullPath("/warehouse")}?name=${res.firstName}&id=${res.userId}`);
-      } else if (res.status === 400) {
+      } else if (res.error === "USER_EXIST") {
         this.setState({error: "An account already exists with this email address."});
       } else {
         this.setState({error: "There's an error in our den, please try again later."});
