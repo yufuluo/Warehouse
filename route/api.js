@@ -69,13 +69,24 @@ apiRouter.post("/warehouse/add", (req, res) => {
     image: req.body.image
   };
 
-  Item.create(itemData, (err, user) => {
+  Item.create(itemData, (err, result) => {
     if (err) {
       return res.status(500).json({error: "DB_ERROR"});
     }
 
-    res.json({success: true});
+    res.json({id: result._id});
   });
+});
+
+apiRouter.delete("/warehouse/delete/:itemId", (req, res) => {
+
+  Item.findByIdAndRemove(req.params.itemId, (err, result) => {
+    if (err) {
+      return res.status(500).json({success: false, error: "DB_ERROR"});
+    }
+
+    return res.json({message: "Item removed"});
+  })
 });
 
 apiRouter.get("/warehouse/:userId", (req, res) => {

@@ -8,12 +8,14 @@ export default class Warehouse extends React.Component {
     super(props);
     this.state = {
       data: [],
+      userId: "",
       error: ""
     };
   }
 
   loadItems() {
     const params = this.props.location.query;
+    this.state.userId = params.id;
     fetch(`/api/warehouse/${params.id}`, {
       method: "GET",
       headers: {
@@ -28,27 +30,6 @@ export default class Warehouse extends React.Component {
     });
   }
 
-  handleSubmit(item) {
-    const items = this.state.data;
-    const newItems = items.concat([item]);
-    this.setState({data: newItems});
-
-    return fetch("/api/warehouse/add", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(itemData)
-    }).then((res) => {
-      return res.json();
-    }).then((data) => {
-      this.setState({data});
-    }).catch((err) => {
-      this.setState({error: err.message || "There's an error in our den, please try again later."});
-    });
-  } 
-
   componentDidMount() {
       this.loadItems();
   }
@@ -57,7 +38,7 @@ export default class Warehouse extends React.Component {
     return (
           <div className="Warehouse">
               <ItemList data={this.state.data}/>
-              <ItemForm onSubmit={this.handleSubmit.bind(this)}/>
+              <ItemForm data={this.state.data} userId={this.state.userId} parent={this} />
           </div>
       );
   }

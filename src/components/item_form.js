@@ -23,40 +23,39 @@ export default class ItemForm extends React.Component {
       throw "Invalid form";
     }
 
-    const params = this.props.location.query;
-
-    const data = {
-      userId: params.id,
+    const itemData = {
+      userId: this.props.userId,
       itemName: this.refs.itemName.state.value.trim(),
       description: this.refs.description.state.value.trim(),
       price: this.refs.price.state.value.trim(),
       image: this.refs.image.state.value.trim()
     };
 
-    fetch("/api/warehouse/add", {
+    const parent = this.props.parent;
+
+    const items = this.props.data;
+
+    return fetch("/api/warehouse/add", {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(itemData)
     }).then((res) => {
       return res.json();
-    }).then((res) => {
-      if (!res.success) {
-        this.setState({error: "There's an error in our den, please try again later."});
-      }
+    }).then((data) => {
+      itemData.id = data.id;
+      const newItems = items.concat([itemData]);
+      parent.setState({data: newItems});
     }).catch((err) => {
-      this.setState({error: "There's an error in our den, please try again later."});
+      parent.setState({error: err.message || "There's an error in our den, please try again later."});
     });
   }
-
-
 
   render() {
     return (
       <div className="center_box background">
-        {this.state.error && <h3 className="center warning">{this.state.error}</h3>}
         <h3 className="center"> ʕ•̀ω•́ʔ Please input new items here. </h3>
         <Validation.Form ref="form">
 
