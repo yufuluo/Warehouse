@@ -1,9 +1,6 @@
 import React from "react";
-import { ItemList } from "./item_list.js";
-import { ItemForm } from "./item_form.js";
-
-
-
+import ItemList from "./item_list.js";
+import ItemForm from "./item_form.js";
 
 export default class Warehouse extends React.Component {
 
@@ -20,17 +17,14 @@ export default class Warehouse extends React.Component {
     fetch(`/api/warehouse/${params.id}`, {
       method: "GET",
       headers: {
-        Accept: "application/json",
+        Accept: "application/json"
       }
     }).then((res) => {
       return res.json();
-    }).then((res) => {
-      if (!res.success) {
-        this.setState({error: "There's an error in our den, please try again later."});
-      }
-      this.setState({data: res.body});
+    }).then((data) => {
+      this.setState({data});
     }).catch((err) => {
-      this.setState({error: "There's an error in our den, please try again later."});
+      this.setState({error: err.message || "There's an error in our den, please try again later."});
     });
   }
 
@@ -39,7 +33,7 @@ export default class Warehouse extends React.Component {
     const newItems = items.concat([item]);
     this.setState({data: newItems});
 
-    fetch("/api/warehouse/add", {
+    return fetch("/api/warehouse/add", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -48,20 +42,16 @@ export default class Warehouse extends React.Component {
       body: JSON.stringify(itemData)
     }).then((res) => {
       return res.json();
-    }).then((res) => {
-      if (!res.success) {
-        this.setState({error: "There's an error in our den, please try again later."});
-      }
-      this.setState({data: res});
+    }).then((data) => {
+      this.setState({data});
     }).catch((err) => {
-      this.setState({error: "There's an error in our den, please try again later."});
+      this.setState({error: err.message || "There's an error in our den, please try again later."});
     });
   } 
 
   componentDidMount() {
       this.loadItems();
   }
-
 
   render() {
     return (

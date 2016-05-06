@@ -1,5 +1,5 @@
 import React from "react";
-import { Item } from "./item.js";
+import Item from "./item.js";
 
 export default class ItemList extends React.Component {
 

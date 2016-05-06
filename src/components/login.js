@@ -49,6 +49,7 @@ export default class Login extends React.Component {
         this.setState({error: "There's an error in our den, please try again later."});
       }
     }).catch((err) => {
+      console.log(err);
       this.setState({error: "There's an error in our den, please try again later."});
     });
   }

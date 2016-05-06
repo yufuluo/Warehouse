@@ -29,7 +29,7 @@ export default class Signup extends React.Component {
       password: this.refs.password.state.value
     };
 
-    fetch("/api/signup", {
+    return fetch("/api/signup", {
       method: "POST",
       headers: {
         Accept: "application/json",

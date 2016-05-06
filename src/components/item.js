@@ -1,9 +1,6 @@
 import React from "react";
 
 export default class Item extends React.Component {
-  onChange(state) {
-    this.setState(state);
-  }
 
   render() {
     const display = this.props.id + 'display';
@@ -28,16 +25,10 @@ export default class Item extends React.Component {
             {this.props.id}
           </div>
 
-          // <div>
-          //   <input className="button" type="button" value="Delete" onClick={this.handleDelete}/><br/>
-          //   <input className="button" type="button" value="Edit" onClick={this.handleEdit}/>
-          // </div>
+          
         </form>
 
-        // <form id={edit} className="hide">
-        //   <input className="inputField" type="text" value={this.props.itemName} ref="name"/><br/>
-        //   <input className="button" type="button" value="Update" onClick={this.handleUpdate}/><br/>
-        // </form>
+       
     </div>
   );
   }
