@@ -45,9 +45,11 @@ export default class ItemForm extends React.Component {
     }).then((res) => {
       return res.json();
     }).then((data) => {
-      itemData.id = data.id;
-      const newItems = items.concat([itemData]);
-      parent.setState({data: newItems});
+      if (data.success) {
+        itemData.id = data.id;
+        const newItems = items.concat([itemData]);
+        parent.setState({data: newItems});
+      }
     }).catch((err) => {
       parent.setState({error: err.message || "There's an error in our den, please try again later."});
     });
@@ -135,7 +137,7 @@ export default class ItemForm extends React.Component {
             />
           </label>
 
-          <Button value="Submit" onClick={this.handleSubmit.bind(this)} />
+          <Button className="button1" value="Submit" onClick={this.handleSubmit.bind(this)} />
         </Validation.Form>
       </div>
     );

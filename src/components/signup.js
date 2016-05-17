@@ -183,7 +183,7 @@ export default class Signup extends React.Component {
           </label>
 
           <Button value="Back" onClick={this.handleCancel.bind(this)} />
-          <Button className="right" value="Sign up" onClick={this.handleSubmit.bind(this)} />
+          <Button className="right button1" value="Sign up" onClick={this.handleSubmit.bind(this)} />
         </Validation.Form>
       </div>
     );

@@ -74,7 +74,7 @@ apiRouter.post("/warehouse/add", (req, res) => {
       return res.status(500).json({error: "DB_ERROR"});
     }
 
-    res.json({id: result._id});
+    res.json({success: true, id: result._id});
   });
 });
 
@@ -85,7 +85,7 @@ apiRouter.delete("/warehouse/delete/:itemId", (req, res) => {
       return res.status(500).json({success: false, error: "DB_ERROR"});
     }
 
-    return res.json({message: "Item removed"});
+    return res.json({success: true, message: "Item removed"});
   })
 });
 
