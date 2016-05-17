@@ -2,7 +2,7 @@ import React from "react";
 import { Router, browserHistory } from "react-router";
 import Validation from "react-validation";
 import validator from "validator";
-
+import fetch from "isomorphic-fetch";
 import { Button } from "./lib/button";
 
 import fullPath from "../util/fullPath";
