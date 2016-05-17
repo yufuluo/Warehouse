@@ -27,7 +27,7 @@ app.use(cookieParser());
 
 const config = require("./config/default");
 
-const route = require("./route");
+const route = require("./lib/route");
 app.use(config.basePath.ui, route.uiRouter);
 app.use(config.basePath.api, route.apiRouter);
 

@@ -3,7 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const superagent = require("superagent");
-const apiRouter = require("../../route/api");
+const apiRouter = require("../../lib/route/api");
 const chai = require("chai");
 const expect = chai.expect;
 
@@ -37,7 +37,7 @@ describe("test signup", () => {
       .send({
         firstName: "First",
         lastName: "Last",
-        email: "first11@gmail.com",
+        email: `${Math.random()}@gmail.com`,
         password: "111222"
       })
       .end((err, res) => {

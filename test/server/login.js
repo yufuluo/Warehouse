@@ -3,7 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const superagent = require("superagent");
-const apiRouter = require("../../route/api");
+const apiRouter = require("../../lib/route/api");
 const chai = require("chai");
 const expect = chai.expect;
 
