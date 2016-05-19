@@ -1,4 +1,5 @@
 import React from "react";
+import Logout from "./logout";
 
 export const Header = (props) => {
   const firstName = props.location.query.name;
@@ -6,8 +7,11 @@ export const Header = (props) => {
 
   return (
     <div>
-      <h1>{content}</h1>
-        {props.children}
+      <h1>
+        {content}
+        <Logout />
+      </h1>
+      {props.children}
     </div>
   );
 };
