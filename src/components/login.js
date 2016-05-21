@@ -1,10 +1,10 @@
 import React from "react";
 import { Router, browserHistory } from "react-router";
-import Validation from "react-validation";
 import validator from "validator";
 import fetch from "isomorphic-fetch";
 import { Button } from "./lib/button";
 
+import { validateEmail, validateEmpty} from "../util/validation";
 import fullPath from "../util/fullPath";
 
 export default class Login extends React.Component {
@@ -64,53 +64,36 @@ export default class Login extends React.Component {
       <div className="center_box background">
         {this.state.error && <h3 className="center warning">{this.state.error}</h3>}
         <h3 className="center"> ʕ•̀ω•́ʔ  Welcome back! Your BearHouse is waiting for you!  ʕ•̫͡•ʕ•̫͡•ʔ•̫͡•ʔ•̫͡•ʕ</h3>
-        <Validation.Form ref="form">
-
+        <form ref="form">
           <label>
             Email
-            <Validation.Input
+            <input
               className="ui-input inputField" 
               type="text" 
               placeholder="Email" 
               name="email" 
               ref="email" 
               invalidClassName="ui-error"
-              value=""
-              validations={[
-                {
-                  rule: "isRequired",
-                  errorMessage: "Mandatory field"
-                },
-                {
-                  rule: "isEmail",
-                  errorMessage: "Invalid Email address"
-                }
-              ]}
+              onChange={validateEmail}
             />
           </label>
 
           <label>
             Password
-            <Validation.Input
+            <input
               className="ui-input inputField" 
               type="password"
               placeholder="Password" 
               name="password" 
               ref="password" 
               invalidClassName="ui-error"
-              value=""
-              validations={[
-                {
-                  rule: "isRequired",
-                  errorMessage: "Mandatory field"
-                }
-              ]}
+              onChange={validateEmpty}
             />
           </label>
 
           <Button value="Back" onClick={this.handleCancel.bind(this)} />
           <Button className="right" value="Login" onClick={this.handleSubmit.bind(this)} />
-        </Validation.Form>
+        </form>
       </div>
     );
   }
