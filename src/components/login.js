@@ -1,6 +1,5 @@
 import React from "react";
 import { Router, browserHistory } from "react-router";
-import validator from "validator";
 import fetch from "isomorphic-fetch";
 import { Button } from "./lib/button";
 
@@ -20,13 +19,13 @@ export default class Login extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    if (!this.refs.form.isValidForm()) {
-      throw "Invalid form";
-    }
+    //if (!this.refs.form.isValidForm()) {
+    //  throw "Invalid form";
+    //}
 
     const data = {
-      email: this.refs.email.state.value.trim(),
-      password: this.refs.password.state.value.trim()
+      email: this.refs.email.value.trim(),
+      password: this.refs.password.value.trim()
     };
 
     fetch("/api/login", {

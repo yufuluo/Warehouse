@@ -1,7 +1,6 @@
 import React from "react";
 
-import Validation from "react-validation";
-import validator from "validator";
+import { validateEmpty, validatePrice, validateURL } from "../util/validation";
 
 import { Button } from "./lib/button";
 
@@ -19,9 +18,9 @@ export default class ItemForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    if (!this.refs.form.isValidForm()) {
-      throw "Invalid form";
-    }
+    //if (!this.refs.form.isValidForm()) {
+    //  throw "Invalid form";
+    //}
 
     const itemData = {
       userId: this.props.userId,
@@ -59,86 +58,62 @@ export default class ItemForm extends React.Component {
     return (
       <div className="center_box background">
         <h3 className="center"> ʕ•̀ω•́ʔ Please input new items here. </h3>
-        <Validation.Form ref="form">
+        <form ref="form">
 
           <label>
             Item Name
-            <Validation.Input
+            <input
               className="ui-input inputField" 
               type="text" 
               placeholder="Item name" 
               name="itemName" 
               ref="itemName" 
               invalidClassName="ui-error"
-              value=""
-              validations={[
-                {
-                  rule: "isRequired",
-                  errorMessage: "Mandatory field"
-                }
-              ]}
+              onChange={validateEmpty}
             />
           </label>
 
           <label>
             Description
-            <Validation.Input
+            <input
               className="ui-input inputField" 
               type="description"
               placeholder="Description" 
               name="description" 
               ref="description" 
               invalidClassName="ui-error"
-              value=""
-              validations={[
-                {
-                  rule: "isRequired",
-                  errorMessage: "Mandatory field"
-                }
-              ]}
+              onChange={validateEmpty}
             />
           </label>
 
           <label>
             Price
-            <Validation.Input
+            <input
               className="ui-input inputField" 
               type="text"
               placeholder="Price" 
               name="price" 
               ref="price" 
               invalidClassName="ui-error"
-              value=""
-              validations={[
-                {
-                  rule: "isRequired",
-                  errorMessage: "Mandatory field"
-                }
-              ]}
+              onChange={validatePrice}
             />
           </label>
 
           <label>
             Image URL
-            <Validation.Input
+            <input
               className="ui-input inputField" 
               type="text"
               placeholder="Image URL" 
               name="iamge" 
               ref="image" 
               invalidClassName="ui-error"
-              value=""
-              validations={[
-                {
-                  rule: "isRequired",
-                  errorMessage: "Mandatory field"
-                }
-              ]}
+              onChange={validateURL}
             />
           </label>
 
           <Button className="button1" value="Submit" onClick={this.handleSubmit.bind(this)} />
-        </Validation.Form>
+        </form>
       </div>
     );
   }
