@@ -3,6 +3,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const authtication = require("./lib/authentication");
+const errorHandler = require("./lib/errorHandler");
 const path = require("path");
 const webpack = require("webpack");
 
@@ -24,6 +26,8 @@ app.set("port", process.env.PORT || 8000);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
+//app.use(authtication);
+//app.use(errorHandler);
 
 const config = require("./config/default");
 
