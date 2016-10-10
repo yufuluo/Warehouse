@@ -64,9 +64,10 @@ export default class Signup extends React.Component {
 
   render() {
     return (
+      <div className="bgcolor">
       <div className="center_box background">
         {this.state.error && <h3 className="center warning">{this.state.error}</h3>}
-        <h3 className="center"> ʕ•̀ω•́ʔ  Hi, bear! Please register to build your own den!  ʕ•̫͡•ʕ•̫͡•ʔ•̫͡•ʔ•̫͡•ʕ</h3>
+        <h3 className="center"> ʕ•̀ω•́ʔ  Hi, bear! Please register to build your own den!  ʕ•̫͡•ʕ•̫͡•ʔ•̫͡•ʔ•̫͡•ʕ•̫͡•ʔ</h3>
         <form refs="form">
           <label>
             First name
@@ -137,6 +138,7 @@ export default class Signup extends React.Component {
           <Button value="Back" onClick={this.handleCancel.bind(this)} />
           <Button className="right button1" value="Sign up" onClick={this.handleSubmit.bind(this)} />
         </form>
+      </div>
       </div>
     );
   }

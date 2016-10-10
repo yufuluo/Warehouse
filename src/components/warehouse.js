@@ -9,7 +9,8 @@ export default class Warehouse extends React.Component {
     this.state = {
       data: [],
       userId: "",
-      error: ""
+      error: "",
+      changed: false
     };
   }
 
@@ -34,11 +35,18 @@ export default class Warehouse extends React.Component {
       this.loadItems();
   }
 
+  if (changed) {
+    this.loadItems();
+    this.setState({changed: false});
+  }
+
   render() {
     return (
           <div className="Warehouse">
-              <ItemList data={this.state.data}/>
+              <div className="bgcolor"> 
               <ItemForm data={this.state.data} userId={this.state.userId} parent={this} />
+              <ItemList data={this.state.data}/>
+              </div>
           </div>
       );
   }

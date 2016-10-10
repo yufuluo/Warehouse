@@ -4,7 +4,7 @@ import Item from "../../src/components/item";
 import { expect } from "chai";
 
 describe("<Item />", () => {
-  it.only("should render Item component", () => {
+  it("should render Item component", () => {
     const src = "https://cdn.shopify.com/s/files/1/0691/2367/t/4/assets/Featured-Image-Rilakkuma.jpg?2448836847819683817";
     const item = render(
       <Item

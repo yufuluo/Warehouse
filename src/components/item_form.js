@@ -24,10 +24,10 @@ export default class ItemForm extends React.Component {
 
     const itemData = {
       userId: this.props.userId,
-      itemName: this.refs.itemName.state.value.trim(),
-      description: this.refs.description.state.value.trim(),
-      price: this.refs.price.state.value.trim(),
-      image: this.refs.image.state.value.trim()
+      itemName: this.refs.itemName.value.trim(),
+      description: this.refs.description.value.trim(),
+      price: this.refs.price.value.trim(),
+      image: this.refs.image.value.trim()
     };
 
     const parent = this.props.parent;
@@ -56,7 +56,7 @@ export default class ItemForm extends React.Component {
 
   render() {
     return (
-      <div className="center_box background">
+      <div className="form_box background">
         <h3 className="center"> ʕ•̀ω•́ʔ Please input new items here. </h3>
         <form ref="form">
 

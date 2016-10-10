@@ -1,8 +1,90 @@
+div .float {
+  position: relative;
+  float: left;
+}
+
+.edit img, input{
+  display: block;
+}
+
+.bgcolor {
+  background-color: #e6f9ff;
+  padding: 1% 0;
+}
+
+.bgcolor.login {
+  padding: 10%;
+}
+
+.header {
+  background-color: #f2f2f2;
+  position: fixed;
+  width: 95.5%;
+}
+
+.header h1 {
+  margin-left: 2%;
+}
+
+.home_img {
+  display: block;
+  float: left;
+  width: 99%;
+  opacity: 0.7;
+}
+
+.B_left {
+  position: absolute;
+  left: 100px;
+  bottom: 20px;
+  display: block;
+  color: white;
+  background-color: green;
+  opacity: 0.5;
+  height: 5%;
+  width: 10%;
+  padding-top: 5px;
+  text-align: center;
+}
+
+.B_right {
+  position: absolute;
+  right: 100px;
+  bottom: 20px;
+  display: block;
+  color: white;
+  background-color: green;
+  opacity: 0.5;
+  height: 5%;
+  width: 10%;
+  padding-top: 5px;
+  text-align: center;
+}
+
 .center_box {
   margin: auto;
   width: 60%;
   border: 3px solid #73AD21;
   padding: 10px;
+}
+
+
+.form_box {
+  position: fixed;
+  top: 15%;
+  right: 3%;
+  width: 30%;
+  border: 3px solid #73AD21;
+  padding: 10px;
+  margin: 10px;
+}
+
+@media screen and (max-width: 840px){
+    .form_box {
+      position: relative;
+      margin: auto;
+      width: 60%;
+    }
 }
 
 .background {
@@ -26,6 +108,7 @@
   margin: auto;
   width: 80%;
   padding: 10px;
+  text-align: center;
 }
 
 .warning {
@@ -48,6 +131,7 @@ body {
   line-height: 1.7;
   margin: 0;
   padding: 30px;
+  padding-top: 0;
 }
 
 a {
@@ -81,15 +165,24 @@ h1 {
   font-weight: bold;
   margin: 0 0 15px;
   padding: 0;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  color: #009999;
+}
+
+h1.hidden {
+    visibility: hidden;
+    margin-bottom: 20px;
 }
 
 h2 {
   border-bottom: 1px solid #eee;
   font-size: 2em;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
 h3 {
   font-size: 1.5em;
+  color: #669999;
 }
 
 h4 {
