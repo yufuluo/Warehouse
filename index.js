@@ -34,6 +34,7 @@ const config = require("./config/default");
 const route = require("./lib/route");
 app.use(config.basePath.ui, route.uiRouter);
 app.use(config.basePath.api, route.apiRouter);
+app.use(express.static('src'));
 
 app.listen(app.get("port"), () => {
   console.log("Server started: http://localhost:" + app.get("port") + "/");
