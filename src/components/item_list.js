@@ -8,7 +8,7 @@ export default class ItemList extends React.Component {
     const itemNodes = this.props.data.map((item, index) => {
       return (
         <Item id={item.id} itemName={item.itemName} description={item.description}
-          price={item.price} image={item.image} key={index}/>
+          price={item.price} image={item.image} parent={this} key={index}/>
       );
     });
 
