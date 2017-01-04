@@ -19,7 +19,8 @@ app.use(require("webpack-dev-middleware")(compiler, {
   publicPath: webpackConfig.output.publicPath
 }));
 
-require("mongoose").connect("mongodb://localhost:27017/test");
+// require("mongoose").connect("mongodb://localhost:27017/test");
+require("mongoose").connect("mongodb://heroku_gjdf1b7b:d38npqpr4vlsvoc0vijfaqt8mg@ds151008.mlab.com:51008/heroku_gjdf1b7b");
 
 app.set("port", process.env.PORT || 8000);
 
