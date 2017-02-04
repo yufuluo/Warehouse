@@ -5,6 +5,7 @@ import { Button } from "./lib/button";
 
 import { validateEmail, validateEmpty} from "../util/validation";
 import fullPath from "../util/fullPath";
+import bear from "../pics/bear.svg";
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -62,8 +63,10 @@ export default class Login extends React.Component {
     return ( 
       <div className="bgcolor login">
       <div className="center_box background">
+        <img className="login_img_left" src={bear} alt="login_bear"/>
         {this.state.error && <h3 className="center warning">{this.state.error}</h3>}
-        <h3 className="center"> ʕ•̀ω•́ʔ  Welcome back! ʕ•̀ω•́ʔ </h3>
+        <img className="login_img_right" src={bear} alt="login_bear"/>
+        <h3 className="center">Welcome back! </h3>
         <h3 className="center"> Your BearHouse is waiting for you! </h3>
         <form ref="form">
           <label>

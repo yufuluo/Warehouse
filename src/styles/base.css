@@ -17,30 +17,53 @@ div .float {
 }
 
 .header {
-  background-color: #f2f2f2;
+  background-color: #dfeff7;
   position: fixed;
   width: 95.5%;
 }
 
 .header h1 {
-  margin-left: 2%;
+  margin-left: 7%;
+  margin-top: 1%;
 }
 
 .home_img {
   display: block;
   float: left;
-  width: 99%;
-  opacity: 0.7;
+  width: 100%;
+  height: 660px;
+  opacity: 0.95;
+}
+
+.header_img {
+  float:left;
+  height: 50px;
+  width: 50px;
+  margin: 10px 10px 10px 20px;
+}
+
+.login_img_left {
+  float:left;
+  height: 50px;
+  width: 50px;
+  margin: 10px;
+}
+
+.login_img_right {
+  float:right;
+  height: 50px;
+  width: 50px;
+  margin: 10px;
 }
 
 .B_left {
   position: absolute;
-  left: 100px;
-  bottom: 20px;
+  left: 285px;
+  bottom: 250px;
   display: block;
-  color: white;
-  background-color: green;
-  opacity: 0.5;
+  color: #788684;
+  font-size: 1.7em;
+  font-family: "Comic Sans MS", cursive, sans-serif;
   height: 5%;
   width: 10%;
   padding-top: 5px;
@@ -49,12 +72,12 @@ div .float {
 
 .B_right {
   position: absolute;
-  right: 100px;
-  bottom: 20px;
+  right: 285px;
+  bottom: 250px;
   display: block;
-  color: white;
-  background-color: green;
-  opacity: 0.5;
+  color: #788684;
+  font-size: 1.7em;
+  font-family: "Comic Sans MS", cursive, sans-serif;
   height: 5%;
   width: 10%;
   padding-top: 5px;
@@ -160,13 +183,12 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-  border-bottom: 1px solid #ddd;
-  font-size: 2.5em;
+  font-size: 2.2em;
   font-weight: bold;
   margin: 0 0 15px;
   padding: 0;
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-  color: #009999;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  color: #788684;
 }
 
 h1.hidden {
@@ -182,7 +204,7 @@ h2 {
 
 h3 {
   font-size: 1.5em;
-  color: #669999;
+  color: #788684;
 }
 
 h4 {

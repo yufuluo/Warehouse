@@ -1,6 +1,7 @@
 import React from "react";
 import ItemList from "./item_list.js";
 import ItemForm from "./item_form.js";
+import bear from "../pics/bear.svg";
 
 export default class Warehouse extends React.Component {
 
@@ -44,6 +45,7 @@ export default class Warehouse extends React.Component {
     return (
       <div className="Warehouse">
         <div className="bgcolor"> 
+          <img className="login_img" src={bear} alt="login_bear"/>
           <ItemForm data={this.state.data} userId={this.state.userId} parent={this} />
           <ItemList data={this.state.data} parent={this}/>
         </div>
