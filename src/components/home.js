@@ -6,10 +6,12 @@ import fullPath from "../util/fullPath";
 export default class Home extends React.Component {
   render() {
     return (
-      <div className="float home_bg">
-        <img className="home_img" src="pics/homepage_background.jpg"/>
-        <Link className="B_left" to={fullPath("/signup")}>SIGN UP</Link>
-        <Link className="B_right" to={fullPath("/login")}>LOG IN</Link>
+      <div>
+        <div className="float home_bg">
+          <img className="home_img" src="pics/homepage_background.jpg"/>
+          <Link className="B_left" to={fullPath("/signup")}>SIGN UP</Link>
+          <Link className="B_right" to={fullPath("/login")}>LOG IN</Link>
+        </div>
       </div>
     );
   }
