@@ -5,7 +5,7 @@ import { validateEmail, validateEmpty, validateName } from "../util/validation";
 import { Button } from "./lib/button";
 
 import fullPath from "../util/fullPath";
-import bear from "../pics/bear.svg";
+import bear from "../pics/bear-paw.svg";
 
 export default class Signup extends React.Component {
   constructor(props) {

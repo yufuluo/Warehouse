@@ -48,11 +48,46 @@ input {
   opacity: 0.95;
 }
 
-.header_img {
+.home_icon {
+  height: 37px;
+  width: 37px;
+}
+
+
+div .create {
+  position: absolute;
+  top: 80px;
+  left: 150px;
+  width: 250px;
+}
+
+div .manage {
+  position: absolute;
+  top: 80px;
+  left: 520px;
+  width: 250px;
+}
+
+div .update {
+  position: absolute;
+  top: 80px;
+  left: 870px;
+  width: 250px;
+}
+
+.header_img_left {
   float:left;
   height: 50px;
   width: 50px;
   margin: 10px 10px 10px 20px;
+}
+
+.header_img_right {
+  display: inline-block;
+  float:right;
+  height: 50px;
+  width: 50px;
+  margin-right: 20px;
 }
 
 .login_img_left {
@@ -230,12 +265,17 @@ h3 {
   color: #788684;
 }
 
+.home h3 {
+  margin-bottom: -10px;
+}
+
 h4 {
   font-size: 1.2em;
 }
 
 p, ul {
-  margin: 15px 0;
+  margin: 10px 0;
+  line-height: 1.2em;
 }
 
 ul {

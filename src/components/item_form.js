@@ -114,7 +114,7 @@ export default class ItemForm extends React.Component {
             />
           </label>
 
-          <Button className="button1" value="Submit" onClick={this.handleSubmit.bind(this)} />
+          <Button value="Submit" onClick={this.handleSubmit.bind(this)} />
         </form>
       </div>
     );
