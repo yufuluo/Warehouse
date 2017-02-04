@@ -3,6 +3,7 @@ import React from "react";
 import { validateEmpty, validatePrice, validateURL } from "../util/validation";
 
 import { Button } from "./lib/button";
+import bearHead from "../pics/bear-head.svg";
 
 export default class ItemForm extends React.Component {
   constructor(props) {
@@ -57,7 +58,8 @@ export default class ItemForm extends React.Component {
   render() {
     return (
       <div className="form_box background">
-        <h3 className="center"> ʕ•̀ω•́ʔ Please input new items here. </h3>
+        <img className="img_right" src={bearHead} alt="form_bear"/>
+        <h3> Please input new items here~ </h3>
         <form ref="form">
 
           <label>

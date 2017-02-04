@@ -66,11 +66,11 @@ export default class Signup extends React.Component {
   render() {
     return (
       <div className="bgcolor">
-      <div className="center_box background">
+      <div className="center_box signup background">
         <img className="login_img_left" src={bear} alt="login_bear"/>
         {this.state.error && <h3 className="center warning">{this.state.error}</h3>}
         <img className="login_img_right" src={bear} alt="login_bear"/>
-        <h3 className="center"> Hi, bear! Please register to build your own den.</h3>
+        <h3 className="center"> Please register to build your own bear den</h3>
         <h4></h4>
         <form refs="form">
           <label>
