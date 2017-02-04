@@ -2,6 +2,9 @@ import React from "react";
 
 import { Button } from "./lib/button";
 import { validateEmpty, validatePrice } from "../util/validation";
+import textName from "../pics/name.svg";
+import textDes from "../pics/description.svg";
+import textPrice from "../pics/price.svg";
 
 function handleEdit(e) {
   e.preventDefault();
@@ -92,29 +95,38 @@ export default class Item extends React.Component {
     return (
       <form id={display} className="item edit">
         <img className="image" src={this.props.image}/>
-          <input
-            type="text"
-            value={this.state.itemName}
-            name="itemName"
-            ref="itemName"
-            onChange={this.handleChangeName.bind(this)}
-          />
+          <div>
+            <img className="text_img2" src={textName} alt="name"/>
+            <input
+              type="text"
+              value={this.state.itemName}
+              name="itemName"
+              ref="itemName"
+              onChange={this.handleChangeName.bind(this)}
+            />
+          </div>
 
-          <input
-            type="text"
-            value={this.state.description}
-            name="description"
-            ref="description"
-            onChange={this.handleChangeDes.bind(this)}
-          />
+          <div>
+            <img className="text_img2" src={textDes} alt="description"/>
+            <input
+              type="text"
+              value={this.state.description}
+              name="description"
+              ref="description"
+              onChange={this.handleChangeDes.bind(this)}
+            />
+          </div>
 
-          <input
-            type="text"
-            value={this.state.price}
-            name="price"
-            ref="price"
-            onChange={this.handleChangePrice.bind(this)}
-          />
+          <div>
+            <img className="text_img2" src={textPrice} alt="price"/>
+            <input
+              type="text"
+              value={this.state.price}
+              name="price"
+              ref="price"
+              onChange={this.handleChangePrice.bind(this)}
+            />
+          </div>
 
           <div className="hide">
             {this.props.id}
@@ -122,7 +134,7 @@ export default class Item extends React.Component {
 
           <div>
             <Button value="View" onClick={handleView.bind(this)}/>
-            <Button value="Submit" onClick={handleSubmit.bind(this)}/><br/>
+            <Button className="b_r" value="Submit" onClick={handleSubmit.bind(this)}/><br/>
           </div>
       </form>
     );
@@ -133,14 +145,17 @@ export default class Item extends React.Component {
       <form id={display} className="item view">
         <img className="image" src={this.props.image}/>
         <h2 className="itemName">
+          <img className="text_img" src={textName} alt="name"/>
           {this.state.itemName}
         </h2>
 
         <div>
+          <img className="text_img2" src={textDes} alt="description"/>
           {this.state.description}
         </div>
 
         <div>
+          <img className="text_img2" src={textPrice} alt="price"/>
           {this.state.price}
         </div>
 
@@ -150,7 +165,7 @@ export default class Item extends React.Component {
 
         <div>
           <Button value="Delete" onClick={handleDelete.bind(this)}/>
-          <Button value="Edit" onClick={handleEdit.bind(this)}/><br/>
+          <Button className="b_r" value="Edit" onClick={handleEdit.bind(this)}/><br/>
         </div>
       </form>
     );

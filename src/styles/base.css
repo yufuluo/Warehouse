@@ -7,10 +7,22 @@ div .float {
   display: block;
 }
 
+input {
+  padding: 5px;
+  margin: 8px 0;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
 .bgcolor {
-  background-color: #e6f9ff;
+  background-color: #fdffff;
   padding: 1% 0;
   min-height: 680px;
+}
+
+.home_bg {
+  background-color: #f9ffff;
 }
 
 .center_box.signup {
@@ -68,13 +80,14 @@ div .float {
   left: 285px;
   bottom: 250px;
   display: block;
-  color: #788684;
+  color: #557171;
   font-size: 1.7em;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
   height: 5%;
   width: 10%;
   padding-top: 5px;
   text-align: center;
+  font-weight: bold;
 }
 
 .B_right {
@@ -82,13 +95,14 @@ div .float {
   right: 285px;
   bottom: 250px;
   display: block;
-  color: #788684;
+  color: #557171;
   font-size: 1.7em;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
   height: 5%;
   width: 10%;
   padding-top: 5px;
   text-align: center;
+  font-weight: bold;
 }
 
 .center_box {
@@ -109,10 +123,6 @@ div .float {
   margin: 10px;
 }
 
-.image {
-  width: 270px;
-  height: 250px;
-}
 
 @media screen and (max-width: 840px){
     .form_box {
@@ -163,6 +173,7 @@ body {
   background: #fff;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;
+  color: #788684;
   line-height: 1.7;
   margin: 0;
   padding: 30px;

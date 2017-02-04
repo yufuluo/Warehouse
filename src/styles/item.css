@@ -1,14 +1,30 @@
 .image {
-  max-width: 300px;
-  max-height: 200px;
+  width: 270px;
+  height: 230px;
   overflow: auto;
   margin-top: 10px;
+}
+
+.text_img {
+  display: inline-block;
+  float:left;
+  height: 20px;
+  width: 20px;
+  margin: 10px 10px 10px 5px;
+}
+
+.text_img2 {
+  display: inline-block;
+  float:left;
+  height: 15px;
+  width: 15px;
+  margin: 5px;
 }
 
 .item {
   display: block;
   float: left;
-  margin: 20px 70px 20px 30px;
+  margin: 30px 40px 30px 40px;
   color: #666666;
 }
 
