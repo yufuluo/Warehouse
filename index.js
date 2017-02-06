@@ -37,6 +37,10 @@ app.use(config.basePath.ui, route.uiRouter);
 app.use(config.basePath.api, route.apiRouter);
 app.use(express.static('src'));
 
+app.get("/pics/favicon.ico", (req, res) => {
+  res.file(path.join(__dirname, "src/pics/favicon.ico"));
+});
+
 app.listen(app.get("port"), () => {
   console.log("Server started: http://localhost:" + app.get("port") + "/");
 });
