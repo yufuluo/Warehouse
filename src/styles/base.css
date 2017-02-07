@@ -44,7 +44,7 @@ input {
   display: block;
   float: left;
   width: 100%;
-  height: 660px;
+  height: 100%;
   opacity: 0.95;
 }
 
@@ -112,8 +112,8 @@ div .update {
 
 .B_left {
   position: absolute;
-  left: 285px;
-  bottom: 250px;
+  left: 23%;
+  bottom: 35%;
   display: block;
   color: #557171;
   font-size: 1.7em;
@@ -127,8 +127,8 @@ div .update {
 
 .B_right {
   position: absolute;
-  right: 285px;
-  bottom: 250px;
+  right: 23%;
+  bottom: 35%;
   display: block;
   color: #557171;
   font-size: 1.7em;
