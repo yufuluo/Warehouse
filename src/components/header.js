@@ -16,7 +16,7 @@ export const Header = (props) => {
           {firstName ? <Logout /> : 
             <a href="https://www.linkedin.com/in/qijun-kay-liu-9283ba34/"><img className="header_img_right" src={linkedin} alt="linkedin"/></a>}
           {firstName ? null : 
-            <a href="https://qijunliu7.wixsite.com/resume"><img className="header_img_right" src={girl} alt="personal page"/></a>}
+            <a href="https://qijunliu7.com/"><img className="header_img_right" src={girl} alt="personal page"/></a>}
         </h1>
       </div>
       <div>
